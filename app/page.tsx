@@ -2,6 +2,7 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { Star, Camera, Megaphone, BarChart3, CheckCircle } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image" // Import Image component
 
 export default function HomePage() {
   const services = [
@@ -79,10 +80,13 @@ export default function HomePage() {
             </div>
             <div className="relative">
               <div className="bg-white rounded-3xl shadow-2xl p-8">
-                <img
-                  src="/placeholder.svg?height=400&width=500"
+                <Image
+                  src="/placeholder.svg"
                   alt="عقارات فاخرة في السعودية"
+                  width={500} // Provide actual width
+                  height={400} // Provide actual height
                   className="w-full h-80 object-cover rounded-2xl"
+                  priority // Prioritize loading for LCP
                 />
                 <div className="mt-6 grid grid-cols-2 gap-4">
                   {stats.map((stat, index) => (
@@ -166,9 +170,11 @@ export default function HomePage() {
               </div>
             </div>
             <div>
-              <img
-                src="/placeholder.svg?height=500&width=600"
+              <Image
+                src="/placeholder.svg"
                 alt="فريق اتجاه العقارية"
+                width={600} // Provide actual width
+                height={500} // Provide actual height
                 className="w-full h-96 object-cover rounded-2xl shadow-lg"
               />
             </div>
@@ -187,9 +193,9 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="card">
-                <div className="flex mb-4">
+                <div className="flex mb-4" role="img" aria-label={`Rating: ${testimonial.rating} out of 5 stars`}>
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" aria-hidden="true" />
                   ))}
                 </div>
                 <p className="text-gray-600 mb-6 leading-relaxed">"{testimonial.content}"</p>

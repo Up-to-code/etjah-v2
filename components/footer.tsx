@@ -3,7 +3,7 @@ import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from "luc
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1A1A1A] text-white">
+    <footer className="bg-[#1A1A1A] text-white" role="contentinfo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company info */}
@@ -14,17 +14,33 @@ export default function Footer() {
               بأحدث الطرق والتقنيات.
             </p>
             <div className="flex space-x-reverse space-x-4">
-              <a href="#" className="text-gray-300 hover:text-[#D4B896] transition-colors">
-                <Facebook className="w-5 h-5" />
+              <a
+                href="#"
+                className="text-gray-300 hover:text-[#D4B896] transition-colors"
+                aria-label="تابعنا على فيسبوك"
+              >
+                <Facebook className="w-5 h-5" aria-hidden="true" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-[#D4B896] transition-colors">
-                <Twitter className="w-5 h-5" />
+              <a
+                href="#"
+                className="text-gray-300 hover:text-[#D4B896] transition-colors"
+                aria-label="تابعنا على تويتر"
+              >
+                <Twitter className="w-5 h-5" aria-hidden="true" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-[#D4B896] transition-colors">
-                <Instagram className="w-5 h-5" />
+              <a
+                href="#"
+                className="text-gray-300 hover:text-[#D4B896] transition-colors"
+                aria-label="تابعنا على انستغرام"
+              >
+                <Instagram className="w-5 h-5" aria-hidden="true" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-[#D4B896] transition-colors">
-                <Linkedin className="w-5 h-5" />
+              <a
+                href="#"
+                className="text-gray-300 hover:text-[#D4B896] transition-colors"
+                aria-label="تابعنا على لينكدإن"
+              >
+                <Linkedin className="w-5 h-5" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -32,7 +48,7 @@ export default function Footer() {
           {/* Quick links */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-[#D4B896]">روابط سريعة</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2" aria-label="روابط سريعة">
               <li>
                 <Link href="/" className="text-gray-300 hover:text-white transition-colors">
                   الرئيسية
@@ -64,7 +80,7 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-[#D4B896]">خدماتنا</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2" aria-label="قائمة الخدمات">
               <li className="text-gray-300">تسويق العقارات</li>
               <li className="text-gray-300">التصوير الاحترافي</li>
               <li className="text-gray-300">الحملات الرقمية</li>
@@ -78,15 +94,15 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4 text-[#D4B896]">معلومات التواصل</h3>
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-[#D4B896]" />
+                <Phone className="w-5 h-5 text-[#D4B896]" aria-hidden="true" />
                 <span className="text-gray-300">+966 50 123 4567</span>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-[#D4B896]" />
+                <Mail className="w-5 h-5 text-[#D4B896]" aria-hidden="true" />
                 <span className="text-gray-300">info@etijah-realestate.sa</span>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-[#D4B896] mt-1" />
+                <MapPin className="w-5 h-5 text-[#D4B896] mt-1" aria-hidden="true" />
                 <span className="text-gray-300">
                   الرياض، المملكة العربية السعودية
                   <br />
