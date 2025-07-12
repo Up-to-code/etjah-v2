@@ -83,8 +83,8 @@ export default function HomePage() {
                 <Image
                   src="/placeholder.svg"
                   alt="عقارات فاخرة في السعودية"
-                  width={500} // Provide actual width
-                  height={400} // Provide actual height
+                  width={500}
+                  height={400}
                   className="w-full h-80 object-cover rounded-2xl"
                   priority // Prioritize loading for LCP
                 />
@@ -173,8 +173,8 @@ export default function HomePage() {
               <Image
                 src="/placeholder.svg"
                 alt="فريق اتجاه العقارية"
-                width={600} // Provide actual width
-                height={500} // Provide actual height
+                width={600}
+                height={500}
                 className="w-full h-96 object-cover rounded-2xl shadow-lg"
               />
             </div>
@@ -193,7 +193,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="card">
-                <div className="flex mb-4" role="img" aria-label={`Rating: ${testimonial.rating} out of 5 stars`}>
+                <div className="flex mb-4" role="img" aria-label={`التقييم: ${testimonial.rating} من 5 نجوم`}>
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" aria-hidden="true" />
                   ))}

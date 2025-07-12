@@ -135,7 +135,7 @@ export default function ServicesPage() {
             {services.map((service, index) => (
               <div key={index} className="card group hover:scale-105">
                 <div className="flex items-start gap-6">
-                  <div className="text-[#D4B896] group-hover:scale-110 transition-transform duration-300">
+                  <div className="text-[#2C3E50] group-hover:scale-110 transition-transform duration-300">
                     {service.icon}
                   </div>
                   <div className="flex-1">
@@ -144,12 +144,12 @@ export default function ServicesPage() {
                     <ul className="space-y-2 mb-4">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-[#D4B896] flex-shrink-0" />
+                          <CheckCircle className="w-4 h-4 text-[#2C3E50] flex-shrink-0" />
                           <span className="text-gray-600">{feature}</span>
                         </li>
                       ))}
                     </ul>
-                    <div className="text-lg font-semibold text-[#D4B896]">{service.price}</div>
+                    <div className="text-lg font-semibold text-[#1A1A1A]">{service.price}</div>
                   </div>
                 </div>
               </div>
@@ -178,12 +178,12 @@ export default function ServicesPage() {
                 )}
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-[#1A1A1A] mb-2">{pkg.name}</h3>
-                  <div className="text-3xl font-bold text-[#D4B896]">{pkg.price}</div>
+                  <div className="text-3xl font-bold text-[#1A1A1A]">{pkg.price}</div>
                 </div>
                 <ul className="space-y-3 mb-8">
                   {pkg.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-[#D4B896] flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-[#2C3E50] flex-shrink-0" />
                       <span className="text-gray-600">{feature}</span>
                     </li>
                   ))}

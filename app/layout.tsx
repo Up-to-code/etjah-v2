@@ -94,7 +94,8 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className={cairo.className}>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        {/* Removed user-scalable=no and maximum-scale=1 for accessibility */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#f2e7d4" />
         <meta name="background-color" content="#f2e7d4" />
 

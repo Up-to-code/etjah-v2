@@ -1,6 +1,7 @@
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import Link from "next/link"
+import Image from "next/image" // Import Image component
 import { Calendar, User, ArrowLeft, TrendingUp, Home, DollarSign } from "lucide-react"
 
 export const metadata = {
@@ -13,7 +14,7 @@ export default function BlogPage() {
     id: 1,
     title: "اتجاهات السوق العقاري السعودي في 2024",
     excerpt: "تحليل شامل لأحدث التطورات في السوق العقاري السعودي والفرص الاستثمارية المتاحة للمستثمرين",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/placeholder.svg",
     author: "فريق اتجاه",
     date: "15 ديسمبر 2024",
     category: "تحليل السوق",
@@ -25,7 +26,7 @@ export default function BlogPage() {
       id: 2,
       title: "كيفية تحديد السعر المناسب لعقارك",
       excerpt: "دليل شامل لتحديد السعر الأمثل لعقارك بناءً على عوامل السوق والموقع والمواصفات",
-      image: "/placeholder.svg?height=250&width=400",
+      image: "/placeholder.svg",
       author: "أحمد المالكي",
       date: "12 ديسمبر 2024",
       category: "نصائح البيع",
@@ -35,7 +36,7 @@ export default function BlogPage() {
       id: 3,
       title: "أهمية التصوير الاحترافي في بيع العقارات",
       excerpt: "كيف يؤثر التصوير الاحترافي على سرعة بيع العقار وتحقيق أفضل الأسعار",
-      image: "/placeholder.svg?height=250&width=400",
+      image: "/placeholder.svg",
       author: "سارة العتيبي",
       date: "10 ديسمبر 2024",
       category: "التسويق",
@@ -45,7 +46,7 @@ export default function BlogPage() {
       id: 4,
       title: "الاستثمار العقاري في الرياض: الفرص والتحديات",
       excerpt: "نظرة على أفضل المناطق للاستثمار العقاري في الرياض والعوامل المؤثرة على العائد",
-      image: "/placeholder.svg?height=250&width=400",
+      image: "/placeholder.svg",
       author: "محمد السعيد",
       date: "8 ديسمبر 2024",
       category: "استثمار",
@@ -55,7 +56,7 @@ export default function BlogPage() {
       id: 5,
       title: "دليل المشتري الأول للعقارات في السعودية",
       excerpt: "كل ما تحتاج معرفته قبل شراء عقارك الأول في المملكة العربية السعودية",
-      image: "/placeholder.svg?height=250&width=400",
+      image: "/placeholder.svg",
       author: "فاطمة الأحمد",
       date: "5 ديسمبر 2024",
       category: "دليل المشتري",
@@ -65,7 +66,7 @@ export default function BlogPage() {
       id: 6,
       title: "تأثير رؤية 2030 على السوق العقاري",
       excerpt: "كيف تؤثر مشاريع رؤية 2030 على قطاع العقارات والفرص الجديدة للمستثمرين",
-      image: "/placeholder.svg?height=250&width=400",
+      image: "/placeholder.svg",
       author: "خالد الراشد",
       date: "3 ديسمبر 2024",
       category: "تحليل السوق",
@@ -75,7 +76,7 @@ export default function BlogPage() {
       id: 7,
       title: "نصائح لتسريع بيع عقارك",
       excerpt: "استراتيجيات مجربة لبيع عقارك بسرعة وبأفضل سعر ممكن",
-      image: "/placeholder.svg?height=250&width=400",
+      image: "/placeholder.svg",
       author: "نورا المطيري",
       date: "1 ديسمبر 2024",
       category: "نصائح البيع",
@@ -113,10 +114,13 @@ export default function BlogPage() {
             <article className="card mb-12 overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <img
+                  <Image
                     src={featuredPost.image || "/placeholder.svg"}
                     alt={featuredPost.title}
+                    width={600}
+                    height={400}
                     className="w-full h-64 object-cover rounded-xl"
+                    priority
                   />
                 </div>
                 <div className="flex flex-col justify-center">
@@ -125,7 +129,7 @@ export default function BlogPage() {
                       {featuredPost.category}
                     </span>
                     <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
+                      <Calendar className="w-4 h-4" aria-hidden="true" />
                       <span>{featuredPost.date}</span>
                     </div>
                   </div>
@@ -135,14 +139,14 @@ export default function BlogPage() {
                   <p className="text-gray-600 mb-6 leading-relaxed">{featuredPost.excerpt}</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <User className="w-4 h-4" />
+                      <User className="w-4 h-4" aria-hidden="true" />
                       <span>{featuredPost.author}</span>
                       <span>•</span>
                       <span>{featuredPost.readTime}</span>
                     </div>
                     <Link
                       href={`/blog/${featuredPost.id}`}
-                      className="text-[#D4B896] hover:text-[#C4A886] font-medium flex items-center gap-2"
+                      className="text-[#1A1A1A] hover:text-[#D4B896] font-medium flex items-center gap-2"
                     >
                       اقرأ المزيد
                       <ArrowLeft className="w-4 h-4" />
@@ -156,15 +160,17 @@ export default function BlogPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {blogPosts.map((post) => (
                 <article key={post.id} className="card group hover:scale-105">
-                  <img
+                  <Image
                     src={post.image || "/placeholder.svg"}
                     alt={post.title}
+                    width={400}
+                    height={250}
                     className="w-full h-48 object-cover rounded-xl mb-4"
                   />
                   <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
                     <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full">{post.category}</span>
                     <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
+                      <Calendar className="w-4 h-4" aria-hidden="true" />
                       <span>{post.date}</span>
                     </div>
                   </div>
@@ -174,14 +180,14 @@ export default function BlogPage() {
                   <p className="text-gray-600 mb-4 leading-relaxed">{post.excerpt}</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <User className="w-4 h-4" />
+                      <User className="w-4 h-4" aria-hidden="true" />
                       <span>{post.author}</span>
                       <span>•</span>
                       <span>{post.readTime}</span>
                     </div>
                     <Link
                       href={`/blog/${post.id}`}
-                      className="text-[#D4B896] hover:text-[#C4A886] font-medium flex items-center gap-2"
+                      className="text-[#1A1A1A] hover:text-[#D4B896] font-medium flex items-center gap-2"
                     >
                       اقرأ
                       <ArrowLeft className="w-4 h-4" />
@@ -205,7 +211,7 @@ export default function BlogPage() {
                     className="flex items-center justify-between p-3 rounded-lg hover:bg-[#F5F3F0] transition-colors group"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="text-[#D4B896] group-hover:scale-110 transition-transform">{category.icon}</div>
+                      <div className="text-[#2C3E50] group-hover:scale-110 transition-transform">{category.icon}</div>
                       <span className="font-medium text-[#1A1A1A]">{category.name}</span>
                     </div>
                     <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-full">{category.count}</span>
@@ -223,6 +229,7 @@ export default function BlogPage() {
                   type="email"
                   placeholder="بريدك الإلكتروني"
                   className="w-full px-4 py-3 rounded-lg bg-white text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#D4B896]"
+                  aria-label="أدخل بريدك الإلكتروني للاشتراك"
                 />
                 <button type="submit" className="btn-primary w-full">
                   اشترك الآن

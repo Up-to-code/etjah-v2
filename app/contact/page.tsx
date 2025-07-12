@@ -66,6 +66,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4B896] focus:border-transparent"
                       placeholder="أدخل اسمك الكامل"
+                      aria-required="true"
                     />
                   </div>
                   <div>
@@ -81,6 +82,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4B896] focus:border-transparent"
                       placeholder="05xxxxxxxx"
+                      aria-required="true"
                     />
                   </div>
                 </div>
@@ -98,6 +100,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4B896] focus:border-transparent"
                     placeholder="example@email.com"
+                    aria-required="true"
                   />
                 </div>
 
@@ -112,6 +115,7 @@ export default function ContactPage() {
                     value={formData.subject}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4B896] focus:border-transparent"
+                    aria-required="true"
                   >
                     <option value="">اختر موضوع الرسالة</option>
                     <option value="sell-property">بيع عقار</option>
@@ -135,11 +139,12 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4B896] focus:border-transparent resize-none"
                     placeholder="اكتب رسالتك هنا..."
+                    aria-required="true"
                   />
                 </div>
 
                 <button type="submit" className="btn-primary w-full flex items-center justify-center gap-2">
-                  <Send className="w-5 h-5" />
+                  <Send className="w-5 h-5" aria-hidden="true" />
                   إرسال الرسالة
                 </button>
               </form>
@@ -154,7 +159,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="bg-[#D4B896] p-3 rounded-lg">
-                    <Phone className="w-6 h-6 text-[#1A1A1A]" />
+                    <Phone className="w-6 h-6 text-[#1A1A1A]" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-[#1A1A1A] mb-1">الهاتف</h3>
@@ -165,7 +170,7 @@ export default function ContactPage() {
 
                 <div className="flex items-start gap-4">
                   <div className="bg-[#D4B896] p-3 rounded-lg">
-                    <Mail className="w-6 h-6 text-[#1A1A1A]" />
+                    <Mail className="w-6 h-6 text-[#1A1A1A]" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-[#1A1A1A] mb-1">البريد الإلكتروني</h3>
@@ -176,7 +181,7 @@ export default function ContactPage() {
 
                 <div className="flex items-start gap-4">
                   <div className="bg-[#D4B896] p-3 rounded-lg">
-                    <MapPin className="w-6 h-6 text-[#1A1A1A]" />
+                    <MapPin className="w-6 h-6 text-[#1A1A1A]" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-[#1A1A1A] mb-1">العنوان</h3>
@@ -192,7 +197,7 @@ export default function ContactPage() {
 
                 <div className="flex items-start gap-4">
                   <div className="bg-[#D4B896] p-3 rounded-lg">
-                    <Clock className="w-6 h-6 text-[#1A1A1A]" />
+                    <Clock className="w-6 h-6 text-[#1A1A1A]" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-[#1A1A1A] mb-1">ساعات العمل</h3>
@@ -208,9 +213,13 @@ export default function ContactPage() {
             {/* Map */}
             <div className="card">
               <h3 className="text-xl font-bold text-[#1A1A1A] mb-4">موقعنا على الخريطة</h3>
-              <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+              <div
+                className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center"
+                role="img"
+                aria-label="خريطة موقعنا في الرياض، حي الملك فهد، طريق الملك عبدالعزيز"
+              >
                 <div className="text-center text-gray-500">
-                  <MapPin className="w-12 h-12 mx-auto mb-2" />
+                  <MapPin className="w-12 h-12 mx-auto mb-2" aria-hidden="true" />
                   <p>خريطة جوجل - الرياض، السعودية</p>
                   <p className="text-sm">حي الملك فهد، طريق الملك عبدالعزيز</p>
                 </div>
@@ -221,10 +230,12 @@ export default function ContactPage() {
       </div>
 
       {/* FAQ Section */}
-      <section className="bg-[#F5F3F0] section-padding">
+      <section className="bg-[#F5F3F0] section-padding" aria-labelledby="faq-heading">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#1A1A1A] mb-4">الأسئلة الشائعة</h2>
+            <h2 id="faq-heading" className="text-3xl font-bold text-[#1A1A1A] mb-4">
+              الأسئلة الشائعة
+            </h2>
             <p className="text-xl text-gray-600">إجابات على أكثر الأسئلة شيوعاً</p>
           </div>
 

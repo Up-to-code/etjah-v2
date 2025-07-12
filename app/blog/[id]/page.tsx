@@ -1,6 +1,7 @@
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import Link from "next/link"
+import Image from "next/image" // Import Image component
 import { Calendar, User, ArrowRight, Phone, BookOpen, Heart, Share2, PhoneCall } from "lucide-react"
 
 export default function BlogPostPage({ params }: { params: { id: string } }) {
@@ -30,7 +31,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
 
       <p>السوق العقاري السعودي في 2024 يحمل فرصًا استثمارية متنوعة ومربحة. النجاح يتطلب فهمًا عميقًا للاتجاهات الحالية واستراتيجية تسويقية محكمة.</p>
     `,
-    image: "/placeholder.svg?height=400&width=800",
+    image: "/placeholder.svg",
     author: "فريق اتجاه",
     date: "15 ديسمبر 2024",
     category: "تحليل السوق",
@@ -41,12 +42,12 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
     {
       id: 2,
       title: "كيفية تحديد السعر المناسب لعقارك",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/placeholder.svg",
     },
     {
       id: 3,
       title: "أهمية التصوير الاحترافي في بيع العقارات",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/placeholder.svg",
     },
   ]
 
@@ -58,11 +59,12 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
       <div className="bg-[#2C3E50] text-white py-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center gap-4 text-center">
-            <PhoneCall className="w-5 h-5 text-[#D4B896]" />
+            <PhoneCall className="w-5 h-5 text-[#D4B896]" aria-hidden="true" />
             <span className="font-medium">استشارة مجانية عبر الهاتف</span>
             <a
               href="tel:+966501234567"
               className="bg-[#D4B896] text-[#1A1A1A] px-6 py-2 rounded-full font-semibold hover:bg-[#C4A886] transition-colors"
+              aria-label="اتصل الآن للحصول على استشارة مجانية"
             >
               اتصل الآن: 966+ 50 123 4567
             </a>
@@ -72,16 +74,18 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-gray-500 mb-12">
+        <nav className="flex items-center gap-2 text-sm text-gray-500 mb-12" aria-label="مسار التنقل">
           <Link href="/" className="hover:text-[#2C3E50] transition-colors">
             الرئيسية
           </Link>
-          <span>/</span>
+          <span aria-hidden="true">/</span>
           <Link href="/blog" className="hover:text-[#2C3E50] transition-colors">
             المدونة
           </Link>
-          <span>/</span>
-          <span className="text-[#2C3E50]">{blogPost.category}</span>
+          <span aria-hidden="true">/</span>
+          <span className="text-[#2C3E50]" aria-current="page">
+            {blogPost.category}
+          </span>
         </nav>
 
         {/* Article Header */}
@@ -89,11 +93,11 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
           <div className="flex items-center justify-center gap-6 text-sm text-gray-600 mb-8">
             <span className="bg-[#2C3E50] text-white px-4 py-2 rounded-full">{blogPost.category}</span>
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-[#2C3E50]" />
+              <Calendar className="w-4 h-4 text-[#2C3E50]" aria-hidden="true" />
               <span>{blogPost.date}</span>
             </div>
             <div className="flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-[#2C3E50]" />
+              <BookOpen className="w-4 h-4 text-[#2C3E50]" aria-hidden="true" />
               <span>{blogPost.readTime}</span>
             </div>
           </div>
@@ -104,10 +108,13 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
 
         {/* Featured Image */}
         <div className="mb-16">
-          <img
+          <Image
             src={blogPost.image || "/placeholder.svg"}
             alt={blogPost.title}
+            width={800}
+            height={400}
             className="w-full h-96 object-cover rounded-3xl shadow-xl"
+            priority
           />
         </div>
 
@@ -124,7 +131,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 bg-[#2C3E50] rounded-full flex items-center justify-center">
-                <User className="w-8 h-8 text-white" />
+                <User className="w-8 h-8 text-white" aria-hidden="true" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-[#1A1A1A]">{blogPost.author}</h3>
@@ -133,12 +140,18 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
             </div>
 
             <div className="flex items-center gap-4">
-              <button className="flex items-center gap-2 text-[#2C3E50] hover:text-[#D4B896] transition-colors">
-                <Heart className="w-5 h-5" />
+              <button
+                className="flex items-center gap-2 text-[#2C3E50] hover:text-[#D4B896] transition-colors"
+                aria-label="أعجبني هذا المقال"
+              >
+                <Heart className="w-5 h-5" aria-hidden="true" />
                 <span>أعجبني</span>
               </button>
-              <button className="flex items-center gap-2 text-[#2C3E50] hover:text-[#D4B896] transition-colors">
-                <Share2 className="w-5 h-5" />
+              <button
+                className="flex items-center gap-2 text-[#2C3E50] hover:text-[#D4B896] transition-colors"
+                aria-label="مشاركة هذا المقال"
+              >
+                <Share2 className="w-5 h-5" aria-hidden="true" />
                 <span>مشاركة</span>
               </button>
             </div>
@@ -147,7 +160,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
 
         {/* Free Consultation CTA */}
         <div className="bg-gradient-to-r from-[#F5F3F0] to-[#E8E4E0] rounded-3xl p-12 text-center mb-16">
-          <Phone className="w-16 h-16 text-[#2C3E50] mx-auto mb-6" />
+          <Phone className="w-16 h-16 text-[#2C3E50] mx-auto mb-6" aria-hidden="true" />
           <h2 className="text-3xl font-bold text-[#1A1A1A] mb-4">هل تحتاج استشارة مجانية؟</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             تحدث مع خبرائنا مجاناً واحصل على نصائح مخصصة لعقارك
@@ -156,8 +169,9 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
             <a
               href="tel:+966501234567"
               className="bg-[#2C3E50] text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-[#1A1A1A] transition-colors flex items-center justify-center gap-3"
+              aria-label="اتصل الآن مجاناً للحصول على استشارة"
             >
-              <PhoneCall className="w-6 h-6" />
+              <PhoneCall className="w-6 h-6" aria-hidden="true" />
               اتصل الآن مجاناً
             </a>
             <Link
@@ -170,13 +184,21 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
         </div>
 
         {/* Related Posts */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-[#1A1A1A] mb-12 text-center">مقالات أخرى قد تهمك</h2>
+        <section className="mb-16" aria-labelledby="related-posts-heading">
+          <h2 id="related-posts-heading" className="text-3xl font-bold text-[#1A1A1A] mb-12 text-center">
+            مقالات أخرى قد تهمك
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {relatedPosts.map((post) => (
               <Link key={post.id} href={`/blog/${post.id}`} className="group">
                 <div className="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group-hover:scale-105">
-                  <img src={post.image || "/placeholder.svg"} alt={post.title} className="w-full h-48 object-cover" />
+                  <Image
+                    src={post.image || "/placeholder.svg"}
+                    alt={post.title}
+                    width={300}
+                    height={200}
+                    className="w-full h-48 object-cover"
+                  />
                   <div className="p-8">
                     <h3 className="text-xl font-bold text-[#1A1A1A] group-hover:text-[#2C3E50] transition-colors leading-tight">
                       {post.title}
@@ -205,8 +227,9 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
         <a
           href="tel:+966501234567"
           className="bg-[#2C3E50] text-white p-4 rounded-full shadow-2xl hover:bg-[#1A1A1A] transition-all duration-300 hover:scale-110 flex items-center gap-3"
+          aria-label="اتصال مجاني"
         >
-          <PhoneCall className="w-6 h-6" />
+          <PhoneCall className="w-6 h-6" aria-hidden="true" />
           <span className="hidden sm:block font-semibold">اتصال مجاني</span>
         </a>
       </div>
